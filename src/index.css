@@ -11,6 +11,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+  max-width: 640px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

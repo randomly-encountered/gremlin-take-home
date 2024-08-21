@@ -1,0 +1,7 @@
+.error-notifier {
+  background: rgb(255 0 0 / 5%);
+  color: rgb(161 9 9);
+  display: flex;
+  flex-grow: 1;
+  padding: 0.5em 1rem;
+}
