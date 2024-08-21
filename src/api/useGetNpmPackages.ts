@@ -1,5 +1,5 @@
 import { type QueryFunctionContext, useQuery } from '@tanstack/react-query'
-import { NpmPackage } from '@api/types'
+import type { NpmPackage } from '@api/types'
 
 function getUrl(params: string) {
   return `https://api.npms.io/v2/search/suggestions?${params}`
@@ -11,7 +11,7 @@ const packagesQueryKey = (queryString: string) =>
 async function getNpmPackages({
   queryKey: [, queryString],
 }: QueryFunctionContext<ReturnType<typeof packagesQueryKey>>) {
-  const searchParams = new URLSearchParams({ q: queryString })
+  const searchParams = new URLSearchParams({ q: queryString, size: '10' })
   const urlWithSearchParams = getUrl(searchParams.toString())
 
   return fetch(urlWithSearchParams, {

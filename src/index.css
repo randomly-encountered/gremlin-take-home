@@ -20,6 +20,10 @@
   max-width: 640px;
 }
 
+*:focus {
+  outline-color: #747bff;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

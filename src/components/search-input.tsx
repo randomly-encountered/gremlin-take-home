@@ -1,7 +1,7 @@
 import { type ChangeEventHandler, type MouseEventHandler, useRef, useState } from 'react'
 import { Icon } from '@iconify/react'
-import styles from '@components/search-input.module.css'
 import loaderIcon from '@assets/loader.svg'
+import styles from '@components/search-input.module.css'
 
 const DEBOUNCE_TIME = 300
 
@@ -33,12 +33,14 @@ export function SearchInput({ isLoading, onChange }: SearchInputProps) {
   }
 
   return (
-    <div className={styles['search-input-container']}>
+    <div
+      className={styles['search-input-container']}
+      role="searchbox"
+    >
       <input
         className={styles['search-input']}
         placeholder="Search packages"
         ref={inputRef}
-        role="searchbox"
         type="text"
         value={value}
         onChange={handleValueChange}
