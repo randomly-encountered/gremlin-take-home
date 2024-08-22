@@ -1,39 +1,43 @@
 import { type QueryFunctionContext, useQuery } from '@tanstack/react-query'
-import type { NpmPackage } from '@api/types'
+import type { NpmPackage, UseGetNpmPackagesOptions } from '@api/types'
 
-function getUrl(params: string) {
-  return `https://api.npms.io/v2/search/suggestions?${params}`
+const FETCH_OPTIONS = {
+  headers: getQueryHeaders(),
+  method: 'GET',
 }
 
-const packagesQueryKey = (queryString: string) =>
-  ['packages', queryString] as const
+const packagesQueryKey = (query: {
+  queryString: string
+  simulateError?: boolean
+}) => [{ key: 'packages', ...query }] as const
 
 async function getNpmPackages({
-  queryKey: [, queryString],
+  queryKey: [{ queryString, simulateError }],
 }: QueryFunctionContext<ReturnType<typeof packagesQueryKey>>) {
-  const searchParams = new URLSearchParams({ q: queryString, size: '10' })
-  const urlWithSearchParams = getUrl(searchParams.toString())
-
-  return fetch(urlWithSearchParams, {
-    headers: getQueryHeaders(),
-    method: 'GET',
-  }).then(async (response) => {
-    if (response.ok) {
-      return (await response.json()) as NpmPackage[]
-    } else {
-      throw new Error('Encountered network error')
-    }
+  const searchParams = new URLSearchParams({
+    q: simulateError ? '' : queryString,
+    size: '10',
   })
+  const urlWithSearchParams = getUrlWithSearchParams(searchParams.toString())
+
+  return fetch(urlWithSearchParams, FETCH_OPTIONS)
+    .then((response) => {
+      if (response.ok) return response
+      throw new Error('Encountered network error')
+    })
+    .then(parseOkResponse)
 }
 
-export function useGetNpmPackages(
-  queryString: string,
-  options?: { enabled: boolean },
-) {
+export function useGetNpmPackages({
+  enabled = true,
+  queryString,
+  simulateError = false,
+}: UseGetNpmPackagesOptions) {
   return useQuery({
-    enabled: !!queryString && (options?.enabled ?? true),
-    queryKey: packagesQueryKey(queryString),
+    enabled: !!queryString && enabled,
+    queryKey: packagesQueryKey({ queryString, simulateError }),
     queryFn: getNpmPackages,
+    retry: simulateError ? 1 : 3,
   })
 }
 
@@ -45,4 +49,12 @@ function getQueryHeaders() {
   headers.set('Host', 'api.npms.io')
 
   return headers
+}
+
+function getUrlWithSearchParams(params: string) {
+  return `https://api.npms.io/v2/search/suggestions?${params}`
+}
+
+async function parseOkResponse(response: Response) {
+  return (await response.json()) as NpmPackage[]
 }

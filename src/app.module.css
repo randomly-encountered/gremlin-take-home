@@ -15,3 +15,10 @@
   margin: 0;
   row-gap: 0.5em;
 }
+
+.view-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}

@@ -35,3 +35,9 @@ export interface NpmPackage {
   searchScore: number
   highlight: string
 }
+
+export interface UseGetNpmPackagesOptions {
+  enabled?: boolean
+  queryString: string
+  simulateError?: boolean
+}
