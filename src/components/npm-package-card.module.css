@@ -11,6 +11,7 @@
 .npm-package-description {
   margin: 0;
   font-size: 0.875em;
+  opacity: 0.75;
 }
 
 .npm-package-description em {
