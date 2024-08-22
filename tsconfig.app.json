@@ -21,12 +21,12 @@
     "noFallthroughCasesInSwitch": true,
 
     /* Project */
-    "baseUrl": ".",
+    "baseUrl": "src/",
     "paths": {
-      "@/*": ["src/*"],
-      "@api/*": ["src/api/*"],
-      "@assets/*": ["src/assets/*"],
-      "@components/*": ["src/components/*"]
+      "@core/*": ["./*"],
+      "@api/*": ["./api/*"],
+      "@assets/*": ["./assets/*"],
+      "@components/*": ["./components/*"]
     }
   },
   "include": ["src"]

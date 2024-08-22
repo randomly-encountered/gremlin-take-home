@@ -4,7 +4,7 @@ import { ErrorNotifier } from '@components/error-notifier'
 import { NpmPackageCard } from '@components/npm-package-card'
 import { SearchInput } from '@components/search-input'
 import { ToggleSwitch } from '@components/toggle-switch'
-import styles from '@/app.module.css'
+import styles from '@core/app.module.css'
 
 export default function App() {
   const [queryString, setQueryString] = useState('')
