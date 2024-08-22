@@ -2,7 +2,7 @@ export default {
   extends: [
     'stylelint-config-standard',
     '@stylistic/stylelint-config',
-    'stylelint-order',
+    'stylelint-config-concentric-order',
   ],
   rules: {
     'declaration-empty-line-before': 'never',

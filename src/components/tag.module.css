@@ -1,0 +1,9 @@
+.tag {
+  display: flex;
+  align-items: center;
+  border-radius: 0.25em;
+  background: var(--color-background);
+  padding: 0.125em 0.375em 0.25em;
+  color: rgb(var(--color-light) / 50%);
+  font-size: 0.75em;
+}

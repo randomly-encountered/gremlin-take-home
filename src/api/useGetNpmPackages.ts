@@ -23,7 +23,7 @@ async function getNpmPackages({
   return fetch(urlWithSearchParams, FETCH_OPTIONS)
     .then((response) => {
       if (response.ok) return response
-      throw new Error('Encountered network error')
+      throw new Error('Encountered a network error while fetching suggestions')
     })
     .then(parseOkResponse)
 }

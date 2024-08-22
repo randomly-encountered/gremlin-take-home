@@ -1,24 +1,88 @@
+@property --color-dark {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(18 20 20);
+}
+
+@property --color-light {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(255 255 255);
+}
+
+@property --color-border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(18 20 20 / 12%);
+}
+
+@property --color-background {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(18 20 20 / 6%);
+}
+
+@property --color-highlight {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(27 111 245);
+}
+
+@property --color-error {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(161 9 9);
+}
+
+@property --color-error-background {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(161 9 9 / 5%);
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: rgb(32 29 29 / 87%);
-  background-color: rgb(255 255 255);
-  font-synthesis: none;
+  background-color: var(--color-light);
   text-rendering: optimizelegibility;
+  line-height: 1.5;
+  color: var(--color-dark);
+  font-family: system-ui, Menlo, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color-scheme: light dark;
+  font-synthesis: none;
 }
 
 #root {
   display: flex;
   justify-content: center;
-  margin: 0 auto;
-  padding: 2rem;
   width: 100%;
-  max-width: 640px;
+  min-width: 320px;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 *:focus {
-  outline-color: #747bff;
+  outline-color: var(--color-highlight);
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --color-light: rgb(18 20 20);
+    --color-dark: rgb(255 255 255);
+    --color-border: rgb(255 255 255 / 12%);
+    --color-background: rgb(255 255 255 / 6%);
+    --color-highlight: rgb(223 97 29);
+    --color-error: rgb(254 33 33);
+    --color-error-background: rgb(254 33 33 / 5%);
+  }
 }

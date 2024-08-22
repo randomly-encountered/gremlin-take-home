@@ -3,7 +3,7 @@ import styles from '@components/error-notifier.module.css'
 
 export function ErrorNotifier({ children }: PropsWithChildren) {
   return (
-    <div className={styles['error-notifier']}>
+    <div className={styles['error-notifier']} role="alert">
       {children}
     </div>
   )

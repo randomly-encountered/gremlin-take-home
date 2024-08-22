@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
     "preview": "vite preview",
     "stylelint-fix": "stylelint '**/*.css' --fix",
     "test": "vitest"
@@ -39,8 +40,8 @@
     "globals": "^15.9.0",
     "jsdom": "^24.1.1",
     "stylelint": "^16.8.2",
+    "stylelint-config-concentric-order": "^5.2.0",
     "stylelint-config-standard": "^36.0.1",
-    "stylelint-order": "^6.0.4",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1",

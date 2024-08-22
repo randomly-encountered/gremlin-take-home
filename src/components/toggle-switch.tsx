@@ -7,7 +7,7 @@ interface ToggleSwitch {
 }
 
 export function ToggleSwitch({ isChecked, label, onChange }: ToggleSwitch) {
-  const className = [styles['toggle-switch-control'], isChecked && styles['checked']].filter(Boolean).join(' ')
+  const className = [styles['control'], isChecked && styles['checked']].filter(Boolean).join(' ')
 
   const handleClick = () => {
     onChange(!isChecked)
@@ -15,8 +15,8 @@ export function ToggleSwitch({ isChecked, label, onChange }: ToggleSwitch) {
 
   return (
     <div className={styles['toggle-switch']} onClick={handleClick}>
+      <label className={styles['label']}>{label}</label>
       <button className={className} role="switch" />
-      <label className={styles['toggle-switch-label']}>{label}</label>
     </div>
   )
 }
