@@ -1,12 +1,12 @@
 import styles from '@components/toggle-switch.module.css'
 
-interface ToggleSwitch {
+interface ToggleSwitchProps {
   isChecked: boolean
-  label: string
+  label?: string
   onChange: (checkedState: boolean) => void
 }
 
-export function ToggleSwitch({ isChecked, label, onChange }: ToggleSwitch) {
+export function ToggleSwitch({ isChecked, label, onChange }: ToggleSwitchProps) {
   const className = [styles['control'], isChecked && styles['checked']].filter(Boolean).join(' ')
 
   const handleClick = () => {
@@ -16,7 +16,7 @@ export function ToggleSwitch({ isChecked, label, onChange }: ToggleSwitch) {
   return (
     <div className={styles['toggle-switch']} onClick={handleClick}>
       <label className={styles['label']}>{label}</label>
-      <button className={className} role="switch" />
+      <button aria-checked={isChecked} className={className} role="switch" />
     </div>
   )
 }

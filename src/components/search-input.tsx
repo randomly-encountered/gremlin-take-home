@@ -35,7 +35,7 @@ export function SearchInput({ isLoading, onChange }: SearchInputProps) {
   return (
     <div
       className={styles['search-input-container']}
-      role="searchbox"
+      role="search"
     >
       <input
         className={styles['search-input']}
@@ -46,7 +46,7 @@ export function SearchInput({ isLoading, onChange }: SearchInputProps) {
         onChange={handleValueChange}
       />
       {isLoading
-        ? <img alt="loading..." className={styles['loading-icon']} src={loaderIcon} />
+        ? <img alt="loading..." className={styles['loading-icon']} role="progressbar" src={loaderIcon} />
         : <Icon className={styles['search-icon']} fontSize={20} icon="mdi:search" />}
       <button className={styles['clear-button']} disabled={!value} onClick={clearValue}>
         <Icon className={styles['clear-icon']} fontSize={16} icon="mdi:close" />

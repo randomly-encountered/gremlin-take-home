@@ -7,6 +7,8 @@ import noRelativeParentImportPaths from 'eslint-plugin-no-relative-import-paths'
 import tsEslintParser from '@typescript-eslint/parser'
 import stylistic from '@stylistic/eslint-plugin'
 import eslintConfigPrettier from 'eslint-config-prettier'
+import vitest from '@vitest/eslint-plugin'
+import testingLibrary from 'eslint-plugin-testing-library'
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -33,9 +35,12 @@ export default tseslint.config(
       'react-refresh': reactRefresh,
       'no-relative-import-paths': noRelativeParentImportPaths,
       '@stylistic': stylistic,
+      '@testing-library': testingLibrary,
+      vitest,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      ...vitest.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },

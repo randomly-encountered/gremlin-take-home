@@ -32,7 +32,8 @@ export default function App() {
       {isSuccess && (
         <ul className={styles['search-results-list']} role="feed">
           {data.length
-            ? data.map(NpmPackageCard)
+            ? data.map(({ package: npmPackage }) =>
+              <NpmPackageCard key={npmPackage.name} {...npmPackage} />)
             : <ErrorNotifier>No results found</ErrorNotifier>}
         </ul>
       )}
