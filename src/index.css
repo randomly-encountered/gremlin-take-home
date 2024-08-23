@@ -1,60 +1,65 @@
+/*
+ * Define custom color properties representing the core palette used throughout the UI.
+ * The fewer entries defined, the more clear the rules are to follow, and also provides a clean aesthetic.
+ * NOTE: We default to 'light' theme to initialize values for these
+ */
 @property --color-dark {
-  syntax: "<color>";
   inherits: true;
   initial-value: rgb(18 20 20);
+  syntax: '<color>';
 }
 
 @property --color-light {
-  syntax: "<color>";
   inherits: true;
   initial-value: rgb(255 255 255);
+  syntax: '<color>';
 }
 
 @property --color-border {
-  syntax: "<color>";
   inherits: true;
   initial-value: rgb(18 20 20 / 12%);
+  syntax: '<color>';
 }
 
 @property --color-background {
-  syntax: "<color>";
   inherits: true;
   initial-value: rgb(18 20 20 / 10%);
+  syntax: '<color>';
 }
 
 @property --color-highlight {
-  syntax: "<color>";
   inherits: true;
   initial-value: rgb(87 84 255);
+  syntax: '<color>';
 }
 
 @property --color-input-border {
-  syntax: "<color>";
   inherits: true;
   initial-value: rgb(18 20 20 / 33%);
+  syntax: '<color>';
 }
 
 @property --color-error {
-  syntax: "<color>";
   inherits: true;
   initial-value: rgb(161 9 9);
+  syntax: '<color>';
 }
 
 @property --color-error-background {
-  syntax: "<color>";
   inherits: true;
   initial-value: rgb(161 9 9 / 12%);
+  syntax: '<color>';
 }
 
 :root {
-  background-color: var(--color-light);
-  text-rendering: optimizelegibility;
-  line-height: 1.5;
   color: var(--color-dark);
-  font-family: system-ui, Menlo, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
+  font-family: system-ui, Menlo, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  background-color: var(--color-light);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
   color-scheme: light dark;
   font-synthesis: none;
 }
@@ -81,6 +86,10 @@ html {
   height: 100%;
 }
 
+/*
+ * Redefine each palette entry for dark mode support. This is changed in your browser's
+ * customization options, or might tie in with your day/night preferences integrated with your OS.
+ */
 @media screen and (prefers-color-scheme: dark) {
   :root {
     --color-light: rgb(18 20 20);

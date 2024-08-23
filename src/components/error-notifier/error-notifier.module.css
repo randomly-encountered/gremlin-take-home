@@ -1,9 +1,9 @@
 .error-notifier {
   display: flex;
   align-self: center;
-  border-radius: 0.25em;
-  background: var(--color-error-background);
   padding: 1em 1.25em;
   color: var(--color-error);
   font-size: 0.875em;
+  background: var(--color-error-background);
+  border-radius: 0.25em;
 }

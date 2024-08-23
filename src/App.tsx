@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import { useGetNpmPackages } from '@api/useGetNpmPackages'
-import { ErrorNotifier } from '@components/error-notifier'
-import { NpmPackageCard } from '@components/npm-package-card'
-import { SearchInput } from '@components/search-input'
-import { SearchResultPlaceholder } from '@components/search-result-placeholder'
-import { ToggleSwitch } from '@components/toggle-switch'
+import { ErrorNotifier } from '@core/components/error-notifier/error-notifier'
+import { NpmPackageCard } from '@core/components/npm-package-card/npm-package-card'
+import { SearchInput } from '@core/components/search-input/search-input'
+import { SearchResultPlaceholder } from '@core/components/search-result-placeholder/search-result-placeholder'
+import { ToggleSwitch } from '@core/components/toggle-switch/toggle-switch'
 import styles from '@core/app.module.css'
 
-export default function App() {
+export function App() {
   const [queryString, setQueryString] = useState('')
   const [shouldSimulateError, setShouldSimulateError] = useState(false)
   const { data, error, isError, isFetched, isLoading, isSuccess } = useGetNpmPackages({ queryString, simulateError: shouldSimulateError })
@@ -18,7 +18,7 @@ export default function App() {
         <h1 className={styles['app-title']}>NPM Package Search</h1>
         <ToggleSwitch
           isChecked={shouldSimulateError}
-          label="Simulate error"
+          label='Simulate error'
           onChange={setShouldSimulateError}
         />
       </div>
@@ -32,7 +32,8 @@ export default function App() {
         </div>
       )}
       {isSuccess && (
-        <ul className={styles['search-results-list']} role="feed">
+        /* Render results as a list of cards. Capped at a limit of 10 results */
+        <ul className={styles['search-results-list']} role='feed'>
           {data.length
             ? data.map(({ package: npmPackage }) =>
               <NpmPackageCard key={npmPackage.name} {...npmPackage} />)

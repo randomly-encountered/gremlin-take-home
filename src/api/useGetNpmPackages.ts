@@ -11,6 +11,7 @@ const packagesQueryKey = (query: {
   simulateError?: boolean
 }) => [{ key: 'packages', ...query }] as const
 
+// Responsible for the actual data fetching. Size is set to return 10 results.
 async function getNpmPackages({
   queryKey: [{ queryString, simulateError }],
 }: QueryFunctionContext<ReturnType<typeof packagesQueryKey>>) {
@@ -25,9 +26,10 @@ async function getNpmPackages({
       if (response.ok) return response
       throw new Error('Encountered a network error while fetching suggestions')
     })
-    .then(parseOkResponse)
+    .then(async (response) => (await response.json()) as NpmPackage[])
 }
 
+// Consume query results within a reactive scope given the provided param options
 export function useGetNpmPackages({
   enabled = true,
   queryString,
@@ -37,6 +39,8 @@ export function useGetNpmPackages({
     enabled: !!queryString && enabled,
     queryKey: packagesQueryKey({ queryString, simulateError }),
     queryFn: getNpmPackages,
+    // The exponential back-off and default retries count is painfully long to wait for
+    // when we are simulating an error via UI toggle. Configure this to 1 retry when simulated.
     retry: simulateError ? 1 : 3,
   })
 }
@@ -53,8 +57,4 @@ function getQueryHeaders() {
 
 function getUrlWithSearchParams(params: string) {
   return `https://api.npms.io/v2/search/suggestions?${params}`
-}
-
-async function parseOkResponse(response: Response) {
-  return (await response.json()) as NpmPackage[]
 }

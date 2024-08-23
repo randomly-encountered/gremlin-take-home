@@ -1,7 +1,7 @@
 import { expect, test, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import { ToggleSwitch } from '@components/toggle-switch'
+import { ToggleSwitch } from '@core/components/toggle-switch'
 import { describe } from 'vitest'
 
 describe('ToggleSwitch component', () => {
@@ -31,7 +31,7 @@ describe('ToggleSwitch component', () => {
   })
 
   test('ToggleSwitch should render a label when provided', () => {
-    render(<ToggleSwitch isChecked={false} label="Test label" onChange={vi.fn()} />)
+    render(<ToggleSwitch isChecked={false} label='Test label' onChange={vi.fn()} />)
 
     expect(screen.getByText('Test label')).toBeInTheDocument()
   })

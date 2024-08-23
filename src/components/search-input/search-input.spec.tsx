@@ -1,7 +1,7 @@
 import { describe, expect, test, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import { SearchInput } from '@components/search-input'
+import { SearchInput } from '@core/components/search-input'
 
 describe('SearchInput component', () => {
   test ('Should render a search input with a clear button', () => {

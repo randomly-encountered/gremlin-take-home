@@ -1,8 +1,8 @@
-import { afterEach, describe, expect, test, vi } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { render, screen, waitFor, within } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import App from '@core/App'
+import { App } from '@core/App'
 
 const renderHarness = () => {
   const client = new QueryClient()
@@ -14,7 +14,7 @@ const renderHarness = () => {
   )
 }
 
-async function testInitialQuery(queryString: string) {
+async function renderWithIniitalQuery(queryString: string) {
   renderHarness()
 
   const input = screen.getByRole('textbox')
@@ -25,16 +25,12 @@ async function testInitialQuery(queryString: string) {
 }
 
 describe('App component', () => {
-  afterEach(() => {
-    vi.clearAllMocks()
-  })
-
   test('Should show a list of packages when a search phrase is entered', async () => {
     const queryString = 'react'
 
-    await testInitialQuery(queryString)
+    await renderWithIniitalQuery(queryString)
 
-    const results = await waitFor(() => screen.findAllByRole('listitem'))
+    const results = await waitFor(() => screen.findAllByRole('listitem'), { timeout: 10000 })
 
     expect(results.length).toBeGreaterThan(0)
     expect(results.some((result) => {
@@ -46,7 +42,7 @@ describe('App component', () => {
   test('Clearing the input should clear the search results', async () => {
     const queryString = 'react'
 
-    await testInitialQuery(queryString)
+    await renderWithIniitalQuery(queryString)
 
     const searchContainer = screen.getByRole('search')
     const closeBtn = within(searchContainer).getByRole('button')
@@ -64,7 +60,7 @@ describe('App component', () => {
   test('Should display an error message if there are no query results', async () => {
     const queryString = 'some-random-garbling-nonsense-that-would-never-match-anything-real'
 
-    await testInitialQuery(queryString)
+    await renderWithIniitalQuery(queryString)
 
     const results = await waitFor(() => screen.queryAllByRole('listitem'))
     const notifier = await waitFor(() => screen.getByRole('alert'))

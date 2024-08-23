@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
-import { NpmPackageCard } from '@components/npm-package-card'
+import { NpmPackageCard } from '@core/components/npm-package-card'
 import type { NpmPackage } from '@api/types'
 
 const PACKAGE_TEST_DATA = {

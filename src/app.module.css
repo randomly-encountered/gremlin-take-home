@@ -11,49 +11,54 @@
 }
 
 .app-toolbar {
-  box-sizing: border-box;
-  display: flex;
   position: sticky;
   top: 0;
+  z-index: 2;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 2;
-  border-bottom: 1px solid var(--color-border);
-  padding: 0.5em 1em;
+  box-sizing: border-box;
   width: 100%;
+  padding: 0.5em 1em;
+  background-color: var(--color-light);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .search-input-container {
-  display: flex;
   position: relative;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 1em;
   width: 280px;
+  padding-top: 1em;
 }
 
 .search-results-list {
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   row-gap: 0.5em;
-  margin: 0;
-  padding: 0 0 1em;
+  box-sizing: border-box;
   width: 100%;
   max-width: 640px;
+  margin: 0;
+  padding: 0 0 1em;
   list-style: none;
 }
 
 @media screen and (width <= 640px) {
+  .app-toolbar {
+    padding: 1em;
+  }
+
   .notifier-container,
   .search-results-list {
-    padding: 0 1em;
+    padding: 0 1em 1em;
   }
 }
 
 @media screen and (width <= 480px) {
   .search-input-container {
-    padding: 0 1em;
     width: 100%;
+    padding: 0 1em;
   }
 }

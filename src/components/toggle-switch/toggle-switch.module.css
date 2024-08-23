@@ -2,43 +2,40 @@
   display: flex;
   gap: 0.5em;
   align-items: center;
+  font-size: 0.875em;
 }
 
 .control {
   position: relative;
-  transition: all 0.25s ease-in-out;
-  outline-offset: 4px;
-  outline-color: transparent;
-  border: 1px solid var(--color-input-border);
-  border-radius: 20px;
-  background: var(--color-light);
-  cursor: pointer;
   width: 36px;
   height: 20px;
+  background: var(--color-light);
+  border: 1px solid var(--color-input-border);
+  border-radius: 20px;
+  outline-color: transparent;
+  outline-offset: 4px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
 }
 
 .control::after {
   position: absolute;
   top: 3px;
   left: 3px;
-  transition: inherit;
-  border-radius: 12px;
-  background: currentcolor;
   width: 12px;
   height: 12px;
-  content: "";
+  background: currentcolor;
+  border-radius: 12px;
+  transition: inherit;
+  content: '';
 }
 
 .control.checked {
-  border-color: transparent;
   background-color: var(--color-highlight);
+  border-color: transparent;
 }
 
 .control.checked::after {
   left: calc(100% - 14px);
   background-color: var(--color-light);
-}
-
-.label {
-  font-size: 0.875em;
 }

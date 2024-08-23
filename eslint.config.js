@@ -11,7 +11,7 @@ import vitest from '@vitest/eslint-plugin'
 import testingLibrary from 'eslint-plugin-testing-library'
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  { ignores: ['dist', 'coverage'] },
   eslintConfigPrettier,
   stylistic.configs['recommended-flat'],
   {
@@ -53,7 +53,19 @@ export default tseslint.config(
       '@stylistic/brace-style': ['warn', '1tbs'],
       '@stylistic/template-curly-spacing': ['warn', 'never'],
       '@stylistic/jsx-newline': ['error', { prevent: true }],
+      '@stylistic/jsx-quotes': ['error', 'prefer-single'],
       '@stylistic/jsx-sort-props': ['warn', { callbacksLast: true }],
+      '@stylistic/array-bracket-newline': ['warn', { multiline: true }],
+      '@stylistic/array-element-newline': [
+        'warn',
+        { consistent: true, multiline: true },
+      ],
+      '@stylistic/object-curly-newline': [
+        'warn',
+        { multiline: true, consistent: true },
+      ],
+      '@stylistic/function-call-argument-newline': ['warn', 'consistent'],
+      '@stylistic/function-paren-newline': ['warn', 'consistent'],
       '@typescript-eslint/no-unused-vars': 'error',
     },
     settings: {

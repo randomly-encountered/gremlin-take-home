@@ -1,22 +1,22 @@
 .clear-button {
-  display: flex;
   position: absolute;
   right: 0.5rem;
+  display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--color-input-border);
-  border-radius: 0.25em;
-  background-color: transparent;
-  padding: 0.25em;
   max-width: 1.5em;
   max-height: 1.5em;
+  padding: 0.25em;
+  background-color: transparent;
+  border: 1px solid var(--color-input-border);
+  border-radius: 0.25em;
 }
 
 .clear-button:disabled {
-  border: none;
-  background-color: var(--color-background);
-  cursor: not-allowed;
   color: var(--color-input-border);
+  background-color: var(--color-background);
+  border: none;
+  cursor: not-allowed;
 }
 
 .loading-icon,
@@ -26,9 +26,9 @@
 }
 
 .loading-icon {
-  opacity: 1;
   width: 1em;
   height: auto;
+  opacity: 1;
   fill: var(--color-dark);
 }
 
@@ -37,8 +37,8 @@
 }
 
 .search-input-container {
-  display: flex;
   position: relative;
+  display: flex;
   place-self: center center;
   align-items: center;
   width: 100%;
@@ -46,11 +46,11 @@
 
 .search-input {
   flex-grow: 1;
-  border: 1px solid var(--color-input-border);
-  border-radius: 0.25em;
-  background-color: transparent;
   padding: 0.5em 0.5em 0.5em 2.25em;
   font-size: 1rem;
+  background-color: transparent;
+  border: 1px solid var(--color-input-border);
+  border-radius: 0.25em;
 }
 
 .search-input::placeholder {
