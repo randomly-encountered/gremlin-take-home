@@ -19,8 +19,7 @@
   justify-content: space-between;
   z-index: 2;
   border-bottom: 1px solid var(--color-border);
-  background: var(--color-light);
-  padding: 1em;
+  padding: 0.5em 1em;
   width: 100%;
 }
 
@@ -29,6 +28,7 @@
   position: relative;
   align-items: center;
   justify-content: center;
+  padding-top: 1em;
   width: 280px;
 }
 

@@ -3,13 +3,14 @@ import { useGetNpmPackages } from '@api/useGetNpmPackages'
 import { ErrorNotifier } from '@components/error-notifier'
 import { NpmPackageCard } from '@components/npm-package-card'
 import { SearchInput } from '@components/search-input'
+import { SearchResultPlaceholder } from '@components/search-result-placeholder'
 import { ToggleSwitch } from '@components/toggle-switch'
 import styles from '@core/app.module.css'
 
 export default function App() {
   const [queryString, setQueryString] = useState('')
   const [shouldSimulateError, setShouldSimulateError] = useState(false)
-  const { data, error, isError, isLoading, isSuccess } = useGetNpmPackages({ queryString, simulateError: shouldSimulateError })
+  const { data, error, isError, isFetched, isLoading, isSuccess } = useGetNpmPackages({ queryString, simulateError: shouldSimulateError })
 
   return (
     <main className={styles['app-container']}>
@@ -24,6 +25,7 @@ export default function App() {
       <div className={styles['search-input-container']}>
         <SearchInput isLoading={isLoading} onChange={setQueryString} />
       </div>
+      {!isLoading && !isFetched && <SearchResultPlaceholder />}
       {!isLoading && isError && (
         <div className={styles['notifier-container']}>
           <ErrorNotifier>{error.message}</ErrorNotifier>

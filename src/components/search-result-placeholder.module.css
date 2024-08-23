@@ -1,0 +1,26 @@
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 1em;
+  align-items: center;
+  justify-content: center;
+  margin-top: -8em;
+  padding: 0.5rem;
+}
+
+.illustration {
+  height: auto;
+  max-height: 240px;
+}
+
+.subtitle {
+  color: var(--color-input-border);
+  font-size: 0.875em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .illustration {
+    filter: invert(0.9) hue-rotate(180deg);
+  }
+}

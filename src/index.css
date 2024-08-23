@@ -19,13 +19,19 @@
 @property --color-background {
   syntax: "<color>";
   inherits: true;
-  initial-value: rgb(18 20 20 / 6%);
+  initial-value: rgb(18 20 20 / 10%);
 }
 
 @property --color-highlight {
   syntax: "<color>";
   inherits: true;
-  initial-value: rgb(27 111 245);
+  initial-value: rgb(87 84 255);
+}
+
+@property --color-input-border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgb(18 20 20 / 33%);
 }
 
 @property --color-error {
@@ -37,7 +43,7 @@
 @property --color-error-background {
   syntax: "<color>";
   inherits: true;
-  initial-value: rgb(161 9 9 / 5%);
+  initial-value: rgb(161 9 9 / 12%);
 }
 
 :root {
@@ -81,8 +87,9 @@ html {
     --color-dark: rgb(255 255 255);
     --color-border: rgb(255 255 255 / 12%);
     --color-background: rgb(255 255 255 / 6%);
-    --color-highlight: rgb(223 97 29);
-    --color-error: rgb(254 33 33);
-    --color-error-background: rgb(254 33 33 / 5%);
+    --color-highlight: rgb(137 122 255);
+    --color-input-border: rgb(255 255 255 / 33%);
+    --color-error: rgb(225 67 128);
+    --color-error-background: rgb(225 67 128 / 8%);
   }
 }

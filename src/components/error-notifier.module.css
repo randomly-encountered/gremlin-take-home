@@ -1,5 +1,6 @@
 .error-notifier {
   display: flex;
+  align-self: center;
   border-radius: 0.25em;
   background: var(--color-error-background);
   padding: 1em 1.25em;
